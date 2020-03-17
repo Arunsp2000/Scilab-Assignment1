@@ -1,20 +1,20 @@
-function columnspan(a,n)
+function columnspan(mat,n)
     disp("Column Span:");
     for i=1:n-1
         for j=i+1:n
-            a(j,:) = a(j,:) - (a(j,i)/a(i,i)) * a(i,:);
+            mat(j,:) = mat(j,:) - (mat(j,i)/mat(i,i)) * mat(i,:);
         end
-        disp(a);
+        disp(mat);
     end
     for i=1:n
-        if(a(i,i)<>0)
-            a(i,:)=a(i,:)/a(i,i);
+        if(mat(i,i)<>0)
+            mat(i,:)=mat(i,:)/mat(i,i);
         end
     end
-    disp(a)
+    disp(mat)
     for i=1:n
         for j=i:n
-            if(a(i,j)<>0)
+            if(mat(i,j)<>0)
                 disp('is a pivot element ',j,'column');
                 break
             end
@@ -22,27 +22,27 @@ function columnspan(a,n)
     end
 endfunction
 
-function fundamental_sub_spaces(a)
+function fundamental_sub_spaces(mat)
     disp("Fundamental Spaces:");
-    [m,n]=size(a);
+    [m,n]=size(mat);
     disp(m,'m is ');
     disp(n,'n is ');
-    [v,pivot]=rref(a);
-    disp(rref(a));
+    [v,pivot]=rref(mat);
+    disp(rref(mat));
     disp(v);
     r=length(pivot);
     disp(r,'rank is ')
-    cs=a(:,pivot);
+    cs=mat(:,pivot);
     disp(cs,'Column Space is ');
-    ns=kernel(a);
+    ns=kernel(mat);
     disp(ns,'Null Space is ');
     rs=v(1:r,:)';
     disp(rs,'Row Space is ')
-    lns=kernel(a');
+    lns=kernel(mat');
     disp(lns,'Left Null Space is ');
 endfunction
 
-a = x_matrix("Enter matrix:",zeros(3,3));
-disp(a,"a = ");
-columnspan(a,3);
-fundamental_sub_spaces(a);
+matrix = x_matrix("Enter matrix:",zeros(3,3));
+disp(matrix,"matrix = ");
+columnspan(matrix,3);
+fundamental_sub_spaces(matrix);
