@@ -1,5 +1,5 @@
 function[C,D]=bestfit(A,B)
-    x=(A'*A)\(A'*b);
+    x=(A'*A)\(A'*B);
     C=x(1,1);
     D=x(2,1);
 endfunction
